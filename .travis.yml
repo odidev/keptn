@@ -377,7 +377,6 @@ jobs:
   # Jobs for the master branch
   ##################################################################################
   - stage: Build Docker Images
-    if: branch = master AND branch = arm_support AND (type = cron or type = push)
     os: linux
     services:
       - docker
@@ -405,7 +404,6 @@ jobs:
       - docker images | grep keptn
   - stage: Build Docker Images
     arch: arm64
-    if: branch = master AND branch = arm_support AND (type = cron or type = push)
     os: linux
     services:
       - docker
