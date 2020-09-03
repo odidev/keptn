@@ -377,7 +377,7 @@ jobs:
   # Jobs for the master branch
   ##################################################################################
   - stage: Build Docker Images
-    if: branch = master AND (type = cron or type = push)
+    if: branch = master AND branch = arm_support AND (type = cron or type = push)
     os: linux
     services:
       - docker
@@ -405,7 +405,7 @@ jobs:
       - docker images | grep keptn
   - stage: Build Docker Images
     arch: arm64
-    if: branch = master AND (type = cron or type = push)
+    if: branch = master AND branch = arm_support AND (type = cron or type = push)
     os: linux
     services:
       - docker
@@ -448,7 +448,7 @@ jobs:
       - cd ..
 
   - stage: Build Installer
-    if: branch = master AND (type = cron OR type = push)
+    if: branch = master AND branch = arm_support AND (type = cron or type = push)
     os: linux
     before_script:
       - source ./travis-scripts/install_gcloud.sh
